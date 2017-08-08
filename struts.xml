@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	
+	<package name="t" extends="struts-default">
+		<action name="login" class="com.rent.action.LoginAction" method="login">
+			<result name="login">/login.jsp</result>
+			<result name="home">/home.jsp</result>
+		</action>
+	 	<action name="car_*" class="com.rent.action.CarAction" method="{1}">
+			<result name="showCar">/add_car.jsp</result>
+			<result name="car_list1" type="chain">
+				<param name="actionName">car_findCarList</param>
+				<param name="page">${page}</param>
+				<param name="pageSize">${pageSize}</param>
+			</result>
+			<result name="car_list2">/car_list.jsp</result>
+		</action>
+		<action name="forget_password">
+			<result name="find">/forget_password</result>
+		</action>
+		
+		<!-- <action name="test" class="com.rent.action.TestAction" method="test"> 
+			<result name="success">/success.jsp</result>
+			
+		</action>  -->
+	</package>
+	
+	
+</struts>
